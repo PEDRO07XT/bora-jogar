@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bora fechar o Roblox? 🎮</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+
+            /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
+            /* O linear-gradient aplica uma camada escura transparente para os textos ficarem bem legíveis */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('Tropa.png');
+            background-size: cover;        /* Faz a imagem cobrir a tela inteira sem distorcer */
+            background-position: center;    /* Centraliza a imagem na tela */
+            background-repeat: no-repeat;   /* Impede que a imagem se repita */
+            background-attachment: fixed;   /* Mantém o fundo fixo */
+            
+            color: #ffffff;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
+        }
+        p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+        .container-botoes {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80px;
+        }
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px #000;
+            transition: transform 0.1s ease;
+        }
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 #000;
+        }
+        #sim {
+            background-color: #00E676; /* Verde chamativo para o Sim */
+            color: #000000;
+        }
+        #nao {
+            background-color: #FF1744; /* Vermelho para o Não */
+            color: #ffffff;
+            position: relative; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bora jogar Roblox, sexta-feira? 🎮✨</h1>
+    <p>Deu trabalho fazer isto com o chat gemini kk.</p>
+
+    <div class="container-botoes">
+        <button id="sim" onclick="aceitou()">Sim</button>
+        <button id="nao">Não</button>
+    </div>
+
+    <script>
+        const btnNao = document.getElementById('nao');
+
+        btnNao.addEventListener('mouseover', () => {
+            if (btnNao.style.position !== 'absolute') {
+                btnNao.style.position = 'absolute';
+            }
+
+            // Deixa uma pequena margem (20px) para o botão não colar totalmente nas bordas da tela ao fugir
+            const x = Math.random() * (window.innerWidth - btnNao.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - btnNao.offsetHeight - 20);
+
+            btnNao.style.left = `${Math.max(10, x)}px`;
+            btnNao.style.top = `${Math.max(10, y)}px`;
+        });
+
+        function aceitou() {
+            alert("Boa! Sabia que você ia aceitar. Te aguardo sexta-feira! 🚀💎");
+        }
+    </script>
+
+</body>
+</html>
