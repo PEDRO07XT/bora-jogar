@@ -122,6 +122,26 @@
 
     <script>
         const btnNao = document.getElementById('nao');
+        let origemAcesso = "Acesso Direto / Não identificado";
+
+        // Captura a origem assim que o site carrega
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const origemParam = urlParams.get('src');
+            const origemReferrer = document.referrer;
+
+            if (origemParam) {
+                origemAcesso = origemParam;
+            } else if (origemReferrer) {
+                if (origemReferrer.includes('instagram.com')) origemAcesso = 'Instagram';
+                else if (origemReferrer.includes('tiktok.com')) origemAcesso = 'TikTok';
+                else if (origemReferrer.includes('whatsapp')) origemAcesso = 'WhatsApp';
+                else if (origemReferrer.includes('discord.com')) origemAcesso = 'Discord';
+                else origemAcesso = origemReferrer;
+            }
+
+            console.log("Site aberto via:", origemAcesso);
+        });
 
         function moverBotao(e) {
             if (e) e.preventDefault(); // Evita acionar o clique no mobile
@@ -150,7 +170,15 @@
         btnNao.addEventListener('pointerdown', moverBotao);
 
         function aceitou() {
-            alert("Boa! Sabia que você ia aceitar. Te aguardo sexta-feira! 🚀💎");
+            alert(`Boa! Sabia que você ia aceitar (acessado via ${origemAcesso}). Te aguardo sexta-feira! 🚀💎`);
+            
+            // Tenta fechar a aba
+            window.close();
+
+            // Se o navegador bloquear o fecho automático da aba, redireciona para o Roblox/YouTube
+            setTimeout(() => {
+                window.location.href = "https://www.roblox.com";
+            }, 500);
         }
     </script>
 
